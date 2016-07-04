@@ -36,5 +36,5 @@ Install composer package
 ### Publish config
 
 ```shell
-	php artisan vendor:publish
+	php artisan vendor:publish --provider="Qsoft\Seo\SeoServiceProvider"
 ```

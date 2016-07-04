@@ -4,8 +4,8 @@ namespace Qsoft\Seo;
 /**
  * @Author: thedv
  * @Date:   2016-07-01 17:57:19
- * @Last Modified by:   thedv
- * @Last Modified time: 2016-07-04 09:58:45
+ * @Last Modified by:   Duong The
+ * @Last Modified time: 2016-07-04 11:55:15
  */
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
@@ -27,7 +27,7 @@ class SeoServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/config.php' => config_path('qsoft_seo.php'),
-        ]);
+        ], 'config');
 
         $kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
         $kernel->pushMiddleware(SeoMiddleware::class);
