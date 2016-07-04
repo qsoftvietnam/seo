@@ -16,7 +16,7 @@
         "role": "Developer"
     }],
     "require": {
-        "illuminate/support": "~5.2",
+        "illuminate/support": "~5.1",
         "jonnyw/php-phantomjs": "4.*",
         "php": "~5.5|~7.0"
     },
