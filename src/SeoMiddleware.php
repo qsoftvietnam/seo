@@ -6,7 +6,7 @@ namespace Qsoft\Seo;
  * @Author: thedv
  * @Date:   2016-07-01 18:11:49
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-04 11:09:32
+ * @Last Modified time: 2016-07-04 11:33:48
  */
 
 use Closure;
@@ -40,7 +40,10 @@ class SeoMiddleware
     public function __construct()
     {
         $this->client = Client::getInstance();
-        $this->client->getEngine()->setPath(base_path('bin/phantomjs.exe'));
+        $phantomPath  = config('qsoft_seo.phantom_path');
+        if ($phantomPath) {
+            $this->client->getEngine()->setPath($phantomPath);
+        }
 
     }
 

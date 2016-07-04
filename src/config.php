@@ -3,11 +3,14 @@
  * @Author: thedv
  * @Date:   2016-07-01 17:59:38
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-04 11:10:22
+ * @Last Modified time: 2016-07-04 11:34:16
  */
 
 return [
-
+    /**
+     * Phantomjs path
+     */
+    'phantom_path' => env('PHANTOMJS_PATH', null),
     /**
      * Cache Path
      */
