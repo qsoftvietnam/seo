@@ -5,8 +5,8 @@ namespace Qsoft\Seo;
 /**
  * @Author: thedv
  * @Date:   2016-07-01 18:11:49
- * @Last Modified by:   thedv
- * @Last Modified time: 2016-07-04 10:58:02
+ * @Last Modified by:   Duong The
+ * @Last Modified time: 2016-07-04 11:09:32
  */
 
 use Closure;
@@ -135,7 +135,16 @@ class SeoMiddleware
             File::makeDirectory($path, null, true, true);
         }
         if (File::exists($file)) {
-            return File::get($file);
+            $lastMod = File::lastModified($file);
+            $now     = time();
+            $cc      = $now - $lastMod;
+            if ($cc < config('qsoft_seo.time_refresh')) {
+                return File::get($file);
+            } else {
+                File::put($file, $content);
+                return $content;
+            }
+
         } else {
             File::put($file, $content);
             return $content;
