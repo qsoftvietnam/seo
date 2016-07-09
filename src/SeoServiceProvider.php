@@ -5,7 +5,7 @@ namespace Qsoft\Seo;
  * @Author: thedv
  * @Date:   2016-07-01 17:57:19
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-04 11:55:15
+ * @Last Modified time: 2016-07-09 16:22:14
  */
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
