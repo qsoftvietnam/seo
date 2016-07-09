@@ -6,7 +6,7 @@ namespace Qsoft\Seo;
  * @Author: thedv
  * @Date:   2016-07-01 18:11:49
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-04 11:33:48
+ * @Last Modified time: 2016-07-09 16:49:18
  */
 
 use Closure;
@@ -30,6 +30,12 @@ class SeoMiddleware
      * @var Guzzle
      */
     private $client;
+
+    /**
+     * [$request description]
+     * @var [type]
+     */
+    private $request;
     /**
      * This token will be provided via the X-Prerender-Token header.
      *
@@ -37,6 +43,9 @@ class SeoMiddleware
      */
     private $response;
 
+    /**
+     * [__construct description]
+     */
     public function __construct()
     {
         $this->client = Client::getInstance();
@@ -64,11 +73,11 @@ class SeoMiddleware
 
     private function shouldShowRenderPage($request)
     {
-        $userAgent                   = strtolower($request->server->get('HTTP_USER_AGENT'));
-        $bufferAgent                 = $request->server->get('X-BUFFERBOT');
-        $requestUri                  = $request->getRequestUri();
-        $referer                     = $request->headers->get('Referer');
-        $isRequestingPrerenderedPage = false;
+        $userAgent                = strtolower($request->server->get('HTTP_USER_AGENT'));
+        $bufferAgent              = $request->server->get('X-BUFFERBOT');
+        $requestUri               = $request->getRequestUri();
+        $referer                  = $request->headers->get('Referer');
+        $isRequestingRenderedPage = false;
         if (!$userAgent) {
             return false;
         }
@@ -79,17 +88,17 @@ class SeoMiddleware
 
         // prerender if _escaped_fragment_ is in the query string
         if ($request->query->has('_escaped_fragment_')) {
-            $isRequestingPrerenderedPage = true;
+            $isRequestingRenderedPage = true;
         }
 
         if ($bufferAgent) {
-            $isRequestingPrerenderedPage = true;
+            $isRequestingRenderedPage = true;
         }
 
-        if (!$isRequestingPrerenderedPage) {
+        if (!$isRequestingRenderedPage) {
             return false;
         }
-        // Okay! Prerender please.
+        // Render
         return true;
     }
 
@@ -98,10 +107,9 @@ class SeoMiddleware
 
         $build = $this->buildUrlRequest($request);
         try {
-            $req = $this->client->getMessageFactory()->createRequest($build['url'], 'GET');
-            $res = $this->client->getMessageFactory()->createResponse();
-            $this->client->send($req, $res);
-            $body = $this->cache($build['path'], $res->getContent());
+            $this->request  = $this->client->getMessageFactory()->createRequest($build['url'], 'GET');
+            $this->response = $this->client->getMessageFactory()->createResponse();
+            $body           = $this->cache($build['url']);
             return $this->buildResponse($body);
 
         } catch (RequestException $exception) {
@@ -125,11 +133,10 @@ class SeoMiddleware
 
     /**
      * [cache description]
-     * @param  [type] $request [description]
-     * @param  [type] $content [description]
-     * @return [type]          [description]
+     * @param  [type] $url [description]
+     * @return [type]      [description]
      */
-    private function cache($url, $content)
+    private function cache($url)
     {
         # code...
         $path = config('qsoft_seo.cache_path');
@@ -144,11 +151,15 @@ class SeoMiddleware
             if ($cc < config('qsoft_seo.time_refresh')) {
                 return File::get($file);
             } else {
+                $this->client->send($this->request, $this->response);
+                $content = $this->response->getContent();
                 File::put($file, $content);
                 return $content;
             }
 
         } else {
+            $this->client->send($this->request, $this->response);
+            $content = $this->response->getContent();
             File::put($file, $content);
             return $content;
         }
