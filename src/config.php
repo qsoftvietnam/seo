@@ -3,14 +3,17 @@
  * @Author: thedv
  * @Date:   2016-07-01 17:59:38
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-09 16:26:56
+ * @Last Modified time: 2016-07-09 16:30:41
  */
 
 return [
     /**
      * Phantomjs path
+     * base_path('bin/phantomjs.exe') | window
+     * base_path('bin/phantomjs') | linux
+     * default: linux
      */
-    'phantom_path' => env('PHANTOMJS_PATH', base_path('bin/phantomjs.exe')),
+    'phantom_path' => env('PHANTOMJS_PATH', base_path('bin/phantomjs')),
     /**
      * Cache Path
      */
