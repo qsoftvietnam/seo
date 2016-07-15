@@ -33,6 +33,11 @@ Install composer package
 	Qsoft\Seo\SeoServiceProvider::class,
 ```
 
+### Alias
+```php
+    'QsoftClawer'     => Qsoft\Seo\Support\Facades\QsoftClawer::class,
+```
+
 ### Publish config
 
 ```shell

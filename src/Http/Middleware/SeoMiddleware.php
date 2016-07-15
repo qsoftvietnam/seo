@@ -6,7 +6,7 @@ namespace Qsoft\Seo\Http\Middleware;
  * @Author: thedv
  * @Date:   2016-07-01 18:11:49
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-15 17:04:19
+ * @Last Modified time: 2016-07-15 18:13:59
  */
 
 use Closure;
