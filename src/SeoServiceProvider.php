@@ -5,13 +5,14 @@ namespace Qsoft\Seo;
  * @Author: thedv
  * @Date:   2016-07-01 17:57:19
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-15 17:17:53
+ * @Last Modified time: 2016-07-15 19:10:17
  */
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Qsoft\Seo\Console\Commands\CachePage;
+use Qsoft\Seo\Contracts\QsoftCache;
 use Qsoft\Seo\Contracts\QsoftClawer;
 use Qsoft\Seo\Http\Middleware\SeoMiddleware;
 
@@ -64,6 +65,7 @@ class SeoServiceProvider extends ServiceProvider
         );
 
         $this->app->instance('qsoft_clawer', new QsoftClawer);
+        $this->app->instance('qsoft_cache', new QsoftCache);
     }
 
 }

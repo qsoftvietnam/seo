@@ -35,7 +35,8 @@ Install composer package
 
 ### Alias
 ```php
-    'QsoftClawer'     => Qsoft\Seo\Support\Facades\QsoftClawer::class,
+    'QsoftClawer' => Qsoft\Seo\Support\Facades\QsoftClawer::class,
+    'QsoftCache'  => Qsoft\Seo\Support\Facades\QsoftCache::class,
 ```
 
 ### Publish config
