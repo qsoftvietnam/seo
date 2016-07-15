@@ -1,12 +1,12 @@
 <?php
 
-namespace Qsoft\Seo;
+namespace Qsoft\Seo\Http\Middleware;
 
 /**
  * @Author: thedv
  * @Date:   2016-07-01 18:11:49
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-09 16:49:18
+ * @Last Modified time: 2016-07-15 17:04:19
  */
 
 use Closure;
@@ -107,9 +107,7 @@ class SeoMiddleware
 
         $build = $this->buildUrlRequest($request);
         try {
-            $this->request  = $this->client->getMessageFactory()->createRequest($build['url'], 'GET');
-            $this->response = $this->client->getMessageFactory()->createResponse();
-            $body           = $this->cache($build['url']);
+            $body = $this->cache($build['url']);
             return $this->buildResponse($body);
 
         } catch (RequestException $exception) {
@@ -141,27 +139,13 @@ class SeoMiddleware
         # code...
         $path = config('qsoft_seo.cache_path');
         $file = $path . '/' . sha1($url);
-        if (!File::exists($path)) {
-            File::makeDirectory($path, null, true, true);
-        }
+
         if (File::exists($file)) {
-            $lastMod = File::lastModified($file);
-            $now     = time();
-            $cc      = $now - $lastMod;
-            if ($cc < config('qsoft_seo.time_refresh')) {
-                return File::get($file);
-            } else {
-                $this->client->send($this->request, $this->response);
-                $content = $this->response->getContent();
-                File::put($file, $content);
-                return $content;
-            }
+
+            return File::get($file);
 
         } else {
-            $this->client->send($this->request, $this->response);
-            $content = $this->response->getContent();
-            File::put($file, $content);
-            return $content;
+            return false;
         }
 
     }
