@@ -46,7 +46,7 @@ class CachePage extends Command
         $formatter = Formatter::make($xml, Formatter::XML);
 
         $result = $formatter->toArray();
-        if (count($result['url'])) {
+        if (isset($result['url']) && count($result['url'])) {
             foreach ($result['url'] as $key => $value) {
                 if ($this->cache($value['loc'])) {
                     $this->info($value['loc']);
