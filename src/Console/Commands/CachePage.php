@@ -78,6 +78,9 @@ class CachePage extends Command
         }
 
         $content = QsoftClawer::get($url);
+        if (File::exists($file)) {
+            File::delete($file);
+        }
         File::put($file, $content);
         return $content;
 
