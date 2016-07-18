@@ -4,7 +4,7 @@ namespace Qsoft\Seo\Console\Commands;
 
 use File;
 use Illuminate\Console\Command;
-use QsoftClawer;
+use Qsoft\Seo\Contracts\QsoftCache;
 use Qsoft\Seo\Contracts\QsoftClawer;
 use SoapBox\Formatter\Formatter;
 
@@ -79,7 +79,7 @@ class CachePage extends Command
         if (!File::exists($path)) {
             File::makeDirectory($path, null, true, true);
         }
-        $clawer = new QsoftClawer;
+        $clawer  = new QsoftClawer;
         $content = $clawer->get($url);
         if (File::exists($file)) {
             File::delete($file);
