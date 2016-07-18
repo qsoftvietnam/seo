@@ -5,9 +5,8 @@ namespace Qsoft\Seo;
  * @Author: thedv
  * @Date:   2016-07-01 17:57:19
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-15 19:10:17
+ * @Last Modified time: 2016-07-18 16:16:03
  */
-use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
@@ -41,12 +40,12 @@ class SeoServiceProvider extends ServiceProvider
         $kernel = $this->app->make(Kernel::class);
         $kernel->pushMiddleware(SeoMiddleware::class);
 
-        $this->app->booted(function () {
-            $schedule = $this->app->make(Schedule::class);
-            $schedule->command('qsoft:cache:sitemap')
-                ->cron(config('qsoft_seo.cron'))
-                ->timezone(config('qsoft_seo.time_zone'));
-        });
+        // $this->app->booted(function () {
+        //     $schedule = $this->app->make(Schedule::class);
+        //     $schedule->command('qsoft:cache:sitemap')
+        //         ->cron(config('qsoft_seo.cron'))
+        //         ->timezone(config('qsoft_seo.time_zone'));
+        // });
 
     }
 
