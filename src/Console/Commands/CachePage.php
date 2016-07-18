@@ -5,6 +5,7 @@ namespace Qsoft\Seo\Console\Commands;
 use File;
 use Illuminate\Console\Command;
 use QsoftClawer;
+use Qsoft\Seo\Contracts\QsoftClawer;
 use SoapBox\Formatter\Formatter;
 
 class CachePage extends Command
@@ -46,9 +47,11 @@ class CachePage extends Command
         $formatter = Formatter::make($xml, Formatter::XML);
 
         $result = $formatter->toArray();
+
         if (isset($result['url']) && count($result['url'])) {
+            $cache = new QsoftCache;
             foreach ($result['url'] as $key => $value) {
-                if ($this->cache($value['loc'])) {
+                if ($cache->make($value['loc'])) {
                     $this->info($value['loc']);
 
                 } else {
@@ -76,8 +79,8 @@ class CachePage extends Command
         if (!File::exists($path)) {
             File::makeDirectory($path, null, true, true);
         }
-
-        $content = QsoftClawer::get($url);
+        $clawer = new QsoftClawer;
+        $content = $clawer->get($url);
         if (File::exists($file)) {
             File::delete($file);
         }
