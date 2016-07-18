@@ -5,7 +5,7 @@ namespace Qsoft\Seo;
  * @Author: thedv
  * @Date:   2016-07-01 17:57:19
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-18 16:16:03
+ * @Last Modified time: 2016-07-18 17:27:07
  */
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
