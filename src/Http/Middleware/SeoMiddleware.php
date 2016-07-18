@@ -6,7 +6,7 @@ namespace Qsoft\Seo\Http\Middleware;
  * @Author: thedv
  * @Date:   2016-07-01 18:11:49
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-15 18:13:59
+ * @Last Modified time: 2016-07-18 16:01:55
  */
 
 use Closure;
@@ -14,6 +14,7 @@ use File;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Response;
 use JonnyW\PhantomJs\Client;
+use Qsoft\Seo\Contracts\QsoftCache;
 
 class SeoMiddleware
 {
@@ -141,11 +142,11 @@ class SeoMiddleware
         $file = $path . '/' . sha1($url);
 
         if (File::exists($file)) {
-
             return File::get($file);
-
         } else {
-            return false;
+            $cache   = new QsoftCache;
+            $content = $cache->make($url);
+            return $content;
         }
 
     }

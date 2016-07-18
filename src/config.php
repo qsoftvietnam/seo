@@ -3,7 +3,7 @@
  * @Author: thedv
  * @Date:   2016-07-01 17:59:38
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-16 15:28:22
+ * @Last Modified time: 2016-07-18 15:59:10
  */
 
 return [
@@ -48,7 +48,7 @@ return [
     /**
      * Cron pattern
      */
-    'cron'         => '* * * * * *',
+    'cron'         => '0 0 1 * * *',
 
     /**
      * Set the timezone
