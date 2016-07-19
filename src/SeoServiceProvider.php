@@ -5,15 +5,15 @@ namespace Qsoft\Seo;
  * @Author: thedv
  * @Date:   2016-07-01 17:57:19
  * @Last Modified by:   Duong The
- * @Last Modified time: 2016-07-18 17:27:07
+ * @Last Modified time: 2016-07-19 20:46:55
  */
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Qsoft\Seo\Console\Commands\CachePage;
-use Qsoft\Seo\Contracts\QsoftCache;
-use Qsoft\Seo\Contracts\QsoftClawer;
 use Qsoft\Seo\Http\Middleware\SeoMiddleware;
+use Qsoft\Seo\Support\Facades\QsoftCache;
+use Qsoft\Seo\Support\Facades\QsoftClawer;
 
 class SeoServiceProvider extends ServiceProvider
 {
