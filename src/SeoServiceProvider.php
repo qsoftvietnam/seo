@@ -1,5 +1,5 @@
 <?php
-namespace Qsoft\Seo;
+namespace Qsoftvn\Seo;
 
 /**
  * @Author: thedv
@@ -10,15 +10,15 @@ namespace Qsoft\Seo;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Qsoft\Seo\Console\Commands\CachePage;
-use Qsoft\Seo\Contracts\QsoftCache;
-use Qsoft\Seo\Contracts\QsoftClawer;
-use Qsoft\Seo\Http\Middleware\SeoMiddleware;
+use Qsoftvn\Seo\Console\Commands\CachePage;
+use Qsoftvn\Seo\Contracts\QsoftCache;
+use Qsoftvn\Seo\Contracts\QsoftClawer;
+use Qsoftvn\Seo\Http\Middleware\SeoMiddleware;
 
 class SeoServiceProvider extends ServiceProvider
 {
 
-    protected $namespace = 'Qsoft\Seo\Http\Controllers';
+    protected $namespace = 'Qsoftvn\Seo\Http\Controllers';
 
     protected $commands = [
         CachePage::class,

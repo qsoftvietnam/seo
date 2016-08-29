@@ -5,7 +5,7 @@
  * @Last Modified by:   Duong The
  * @Last Modified time: 2016-07-19 21:24:07
  */
-namespace Qsoft\Seo\Support\Facades;
+namespace Qsoftvn\Seo\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

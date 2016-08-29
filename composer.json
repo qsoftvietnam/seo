@@ -1,15 +1,15 @@
 {
-    "name": "qsoft/seo",
+    "name": "qsoftvn/seo",
     "type": "library",
     "description": "Seo angular for Laravel",
     "version": "1.0.0",
     "keywords": [
         "Laravel",
         "Angular SEO",
-        "Qsoft",
+        "Qsoftvn",
         "Seo"
     ],
-    "homepage": "https://github.com/qsoft/seo",
+    "homepage": "https://github.com/qsoftvietnam",
     "license": "MIT",
     "authors": [{
         "name": "Recycle Bin",
@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Qsoft\\Seo\\": "src"
+            "Qsoftvn\\Seo\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Qsoft\\Seo\\": "tests"
+            "Qsoftvn\\Seo\\": "tests"
         }
     },
     "scripts": {

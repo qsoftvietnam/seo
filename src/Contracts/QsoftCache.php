@@ -6,10 +6,10 @@
  * @Last Modified time: 2016-07-18 11:11:32
  */
 
-namespace Qsoft\Seo\Contracts;
+namespace Qsoftvn\Seo\Contracts;
 
 use File;
-use Qsoft\Seo\Contracts\QsoftClawer;
+use Qsoftvn\Seo\Contracts\QsoftClawer;
 
 class QsoftCache
 {

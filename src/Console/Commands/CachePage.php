@@ -1,11 +1,11 @@
 <?php
 
-namespace Qsoft\Seo\Console\Commands;
+namespace Qsoftvn\Seo\Console\Commands;
 
 use File;
 use Illuminate\Console\Command;
-use Qsoft\Seo\Contracts\QsoftCache;
-use Qsoft\Seo\Contracts\QsoftClawer;
+use Qsoftvn\Seo\Contracts\QsoftCache;
+use Qsoftvn\Seo\Contracts\QsoftClawer;
 use SoapBox\Formatter\Formatter;
 
 class CachePage extends Command

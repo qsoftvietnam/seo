@@ -25,22 +25,22 @@ This will ensure the latest version of PhantomJS is installed for your system, i
 Install composer package
 
 ```shell
-	composer require qsoft/seo:dev-master
+	composer require qsoftvn/seo
 ```
 
 ### Provider
 ```php
-	Qsoft\Seo\SeoServiceProvider::class,
+	Qsoftvn\Seo\SeoServiceProvider::class,
 ```
 
 ### Alias
 ```php
-    'QsoftClawer' => Qsoft\Seo\Support\Facades\QsoftClawer::class,
-    'QsoftCache'  => Qsoft\Seo\Support\Facades\QsoftCache::class,
+    'QsoftClawer' => Qsoftvn\Seo\Support\Facades\QsoftClawer::class,
+    'QsoftCache'  => Qsoftvn\Seo\Support\Facades\QsoftCache::class,
 ```
 
 ### Publish config
 
 ```shell
-	php artisan vendor:publish --provider="Qsoft\Seo\SeoServiceProvider"
+	php artisan vendor:publish --provider="Qsoftvn\Seo\SeoServiceProvider"
 ```

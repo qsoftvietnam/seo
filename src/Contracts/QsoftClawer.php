@@ -6,7 +6,7 @@
  * @Last Modified time: 2016-07-15 16:31:06
  */
 
-namespace Qsoft\Seo\Contracts;
+namespace Qsoftvn\Seo\Contracts;
 
 use JonnyW\PhantomJs\Client;
 

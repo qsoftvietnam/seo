@@ -1,6 +1,6 @@
 <?php
 
-namespace Qsoft\Seo\Http\Middleware;
+namespace Qsoftvn\Seo\Http\Middleware;
 
 /**
  * @Author: thedv
@@ -14,7 +14,7 @@ use File;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Response;
 use JonnyW\PhantomJs\Client;
-use Qsoft\Seo\Contracts\QsoftCache;
+use Qsoftvn\Seo\Contracts\QsoftCache;
 
 class SeoMiddleware
 {
