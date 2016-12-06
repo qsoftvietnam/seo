@@ -6,9 +6,11 @@ It is recommended that you use Composer to install PHP PhantomJS. First, add the
 ```php
     "scripts": {
         "post-install-cmd": [
+            ...
             "PhantomInstaller\\Installer::installPhantomJS"
         ],
         "post-update-cmd": [
+            ...
             "PhantomInstaller\\Installer::installPhantomJS"
         ]
     }
@@ -18,6 +20,7 @@ This will ensure the latest version of PhantomJS is installed for your system, i
 
 ```php
     "config": {
+        ...
         "bin-dir": "bin"
     }
 ```
