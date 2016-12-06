@@ -28,7 +28,7 @@ This will ensure the latest version of PhantomJS is installed for your system, i
 Install composer package
 
 ```shell
-	composer require qsoftvn/seo
+	composer require qsoftvn/seo:dev-master
 ```
 
 ### Provider
