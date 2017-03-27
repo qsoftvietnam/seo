@@ -31,7 +31,7 @@ class SeoServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        parent::boot($router);
+        // parent::boot($router);
 
         $this->publishes([
             __DIR__ . '/config.php' => config_path('qsoft_seo.php'),

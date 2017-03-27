@@ -47,3 +47,12 @@ Install composer package
 ```shell
 	php artisan vendor:publish --provider="Qsoftvn\Seo\SeoServiceProvider"
 ```
+
+### Update `phantom_path` from qsoft_seo.php
+
+```php
+    * base_path('bin/phantomjs.exe') | window
+    * base_path('bin/phantomjs') | linux
+
+    'phantom_path' => env('PHANTOMJS_PATH', null),
+```
