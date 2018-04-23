@@ -13,7 +13,6 @@ use Closure;
 use File;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Response;
-use JonnyW\PhantomJs\Client;
 use Qsoftvn\Seo\Contracts\QsoftCache;
 
 class SeoMiddleware
@@ -25,12 +24,6 @@ class SeoMiddleware
      * @var Application
      */
     private $app;
-    /**
-     * The Guzzle Client that sends GET requests to the prerender server
-     *
-     * @var Guzzle
-     */
-    private $client;
 
     /**
      * [$request description]
@@ -43,19 +36,6 @@ class SeoMiddleware
      * @var string
      */
     private $response;
-
-    /**
-     * [__construct description]
-     */
-    public function __construct()
-    {
-        $this->client = Client::getInstance();
-        $phantomPath  = config('qsoft_seo.phantom_path');
-        if ($phantomPath) {
-            $this->client->getEngine()->setPath($phantomPath);
-        }
-
-    }
 
     /**
      * Handle an incoming request.
