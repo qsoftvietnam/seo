@@ -25,10 +25,10 @@ class QsoftClawer
     {
         $this->client = Client::getInstance();
         $phantomPath  = config('qsoft_seo.phantom_path');
+        $this->client->getEngine()->addOption('--ignore-ssl-errors=yes');
         if ($phantomPath) {
             $this->client->getEngine()->setPath($phantomPath);
         }
-
     }
 
     /**
@@ -44,5 +44,4 @@ class QsoftClawer
         $this->client->send($request, $response);
         return $response->getContent();
     }
-
 }
